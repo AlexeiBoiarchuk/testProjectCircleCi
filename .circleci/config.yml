@@ -27,7 +27,7 @@ jobs:
           name: Install and Run Cypress - E2E Testing suit
           command: |
             npm install cypress
-            npm run cy:run --spec "cypress/e2e/1-getting-started/todo.cy.js"
+            $(npm bin)/cypress run --spec "cypress/e2e/1-getting-started/todo.cy.js"
     resource_class: large
 
 workflows:
