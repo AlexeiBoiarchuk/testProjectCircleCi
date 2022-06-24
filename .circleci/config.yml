@@ -32,7 +32,6 @@ jobs:
     resource_class: large
 
 workflows:
-  version: 2.1
   test-main:
     jobs:
       - cypress:
@@ -44,6 +43,9 @@ workflows:
     jobs:
       - cypress:
           e: php74-apache-bullseye-node-browsers-legacy
+          filters:
+            branches:
+              only: develop
     triggers:
       - schedule:
           cron: "5,10,15,20,22,24,26,28,30,46,48,50,52,54,56,58 * * * *"
