@@ -1,0 +1,38 @@
+# PHP CircleCI 2.1 configuration file#
+# Check https://circleci.com/docs/2.1/language-php/ for more details
+#
+version: 2.1
+
+executors:
+  php74-apache-bullseye-node-browsers-legacy:
+    environment:
+      CC_TEST_REPORTER_ID: 0bcae766590e03f9d5a9ca4e6df6d4d12d4938d4f51c1445a9e7d564898d5073
+      LC_ALL: "en_US.UTF-8"
+      LANGUAGE: "en_US.UTF-8"
+      LANG: "en_US.UTF-8"
+    docker:
+      - image: circleci/php:7.4-apache-bullseye-node-browsers-legacy
+      - image: schickling/beanstalkd:latest
+      - image: memcached:1.5.10-alpine
+    working_directory: ~/repo
+
+jobs:
+  cypress:
+    parameters:
+      e:
+        type: executor
+    executor: << parameters.e >>
+    steps:
+      - run:
+          name: Install and Run Cypress - E2E Testing suit
+          command: |
+            npm install cypress
+            npm run cy:run --spec "cypress/e2e/1-getting-started/todo.cy.js"
+    resource_class: large
+
+workflows:
+  version: 2.1
+  test:
+    jobs:
+      - cypress:
+          e: php74-apache-bullseye-node-browsers-legacy
