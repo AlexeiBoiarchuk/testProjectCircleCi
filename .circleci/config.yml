@@ -39,14 +39,3 @@ workflows:
           filters:
             branches:
               only: main
-  test-schedule:
-    jobs:
-      - cypress:
-          e: php74-apache-bullseye-node-browsers-legacy
-    triggers:
-      - schedule:
-          cron: "5,10,15,20,22,24,26,28,30,46,48,50,52,54,56,58 * * * *"
-          filters:
-            branches:
-              only:
-                - develop
