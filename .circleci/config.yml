@@ -38,8 +38,8 @@ workflows:
       - cypress:
           e: php74-apache-bullseye-node-browsers-legacy
       - schedule:
-      cron: "5,10,15,20,25,30 * * * *"
-      filters:
-        branches:
-          only:
-            - develop
+          cron: "5,10,15,20,25,30 * * * *"
+          filters:
+            branches:
+              only:
+                - develop
