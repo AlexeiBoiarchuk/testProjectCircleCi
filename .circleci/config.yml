@@ -37,6 +37,7 @@ workflows:
     jobs:
       - cypress:
           e: php74-apache-bullseye-node-browsers-legacy
+    triggers:
       - schedule:
           cron: "5,10,15,20,25,30 * * * *"
           filters:
