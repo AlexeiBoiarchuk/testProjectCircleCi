@@ -39,7 +39,7 @@ workflows:
           e: php74-apache-bullseye-node-browsers-legacy
     triggers:
       - schedule:
-          cron: "5,10,15,20,25,30 * * * *"
+          cron: "5,10,15,20,22,24,26,28,30 * * * *"
           filters:
             branches:
               only:
