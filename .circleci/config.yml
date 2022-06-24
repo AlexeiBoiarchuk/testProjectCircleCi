@@ -23,6 +23,7 @@ jobs:
         type: executor
     executor: << parameters.e >>
     steps:
+      - checkout
       - run:
           name: Install and Run Cypress - E2E Testing suit
           command: |
