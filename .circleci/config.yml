@@ -17,7 +17,7 @@ executors:
     working_directory: ~/repo
 
 jobs:
-  cypress1:
+  php:
     parameters:
       e:
         type: executor
@@ -31,7 +31,7 @@ jobs:
             $(npm bin)/cypress run --spec "cypress/e2e/1-getting-started/todo.cy.js" --config-file cypress.config.js
     resource_class: large
 
-  cypress2:
+  cypress:
     parameters:
       e:
         type: executor
@@ -46,13 +46,13 @@ jobs:
     resource_class: large
 
 workflows:
-  test-cypress:
+  test-php:
     jobs:
-      - cypress1:
+      - php:
           e: php74-apache-bullseye-node-browsers-legacy
   test-main:
     jobs:
-      - cypress2:
+      - cypress:
           e: php74-apache-bullseye-node-browsers-legacy
           filters:
             branches:
