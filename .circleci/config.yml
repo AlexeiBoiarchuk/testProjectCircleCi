@@ -50,6 +50,17 @@ workflows:
     jobs:
       - php:
           e: php74-apache-bullseye-node-browsers-legacy
+  test-schedule:
+    jobs:
+      - cypress:
+          e: php74-apache-bullseye-node-browsers-legacy
+    triggers:
+      - schedule:
+          cron: "45,47,48 * * * *"
+          filters:
+            branches:
+              only:
+                - develop
   test-main:
     jobs:
       - cypress:
