@@ -1,18 +1,18 @@
-# name: Trigger main build for circleci
-# # only run on push to main
-# on:
-#   push:
-#     branches: [ main ]
-# jobs:
-#   build:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - name: Trigger main build via circleci api
-#         env:
-#           CIRCLECI_API_TOKEN: ${{ secrets.CIRCLECI_API_TOKEN }} # create this at https://github.com/:org/:repo/settings/secrets
-#         run: |
-#           curl --data "{\"branch\":\"main\"}" \
-#             --header "Content-Type: application/json" \
-#             --header "Circle-Token: $CIRCLECI_API_TOKEN" \
-#             --request POST \
-#             https://circleci.com/api/v2/project/gh/AlexeiBoiarchuk/testProjectCircleCi/pipeline
+name: Trigger main build for circleci
+# only run on push to main
+on:
+  push:
+    branches: [ main ]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger main build via circleci api
+        env:
+          CIRCLECI_API_TOKEN: ${{ secrets.CIRCLECI_API_TOKEN }} # create this at https://github.com/:org/:repo/settings/secrets
+        run: |
+          curl --data "{\"branch\":\"main\"}" \
+            --header "Content-Type: application/json" \
+            --header "Circle-Token: $CIRCLECI_API_TOKEN" \
+            --request POST \
+            https://circleci.com/api/v2/project/gh/AlexeiBoiarchuk/testProjectCircleCi/pipeline
